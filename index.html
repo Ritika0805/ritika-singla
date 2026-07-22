@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritika Singla — QA Automation Architect</title>
+<meta name="description" content="Portfolio of Ritika Singla — Senior SDET / QA Automation Architect. Playwright (TypeScript), API & contract testing, AI-assisted test engineering, CI/CD.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F8FA;
+  --surface:#FFFFFF;
+  --ink:#152238;
+  --ink-soft:#4A5A70;
+  --line:#DDE4EC;
+  --pass:#128A63;
+  --pass-soft:#E4F4EE;
+  --amber:#B97A17;
+  --amber-soft:#FBF1DF;
+  --term-bg:#0F1726;
+  --term-line:#22304A;
+  --term-text:#C9D6E8;
+  --term-green:#4ADE9C;
+  --term-dim:#6C7C96;
+  --term-amber:#F0B35C;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:16px;
+}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,248,250,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.95rem;text-decoration:none;letter-spacing:-.01em}
+.brand .dot{color:var(--pass)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{
+  font-family:'IBM Plex Mono',monospace;font-size:.78rem;text-decoration:none;
+  color:var(--ink-soft);letter-spacing:.02em;
+}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--pass)}
+a:focus-visible{outline:2px solid var(--pass);outline-offset:3px;border-radius:3px}
+
+/* ---------- hero ---------- */
+.hero{padding:72px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.08em;
+  color:var(--pass);text-transform:uppercase;margin-bottom:14px;
+}
+h1{
+  font-family:'Archivo',sans-serif;font-weight:800;
+  font-size:clamp(2.3rem,5vw,3.4rem);line-height:1.05;letter-spacing:-.02em;
+  margin-bottom:18px;
+}
+.hero p.lede{color:var(--ink-soft);font-size:1.06rem;max-width:46ch;margin-bottom:26px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:11px 20px;border-radius:9px;text-decoration:none;
+  font-weight:600;font-size:.92rem;transition:transform .12s ease,box-shadow .12s ease;
+}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(21,34,56,.22)}
+.btn-ghost{border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+
+/* terminal card */
+.term{
+  background:var(--term-bg);border-radius:var(--radius);
+  box-shadow:0 24px 60px -20px rgba(15,23,38,.45);
+  overflow:hidden;border:1px solid var(--term-line);
+}
+.term-bar{
+  display:flex;align-items:center;gap:8px;padding:12px 16px;
+  border-bottom:1px solid var(--term-line);
+}
+.term-bar span{width:10px;height:10px;border-radius:50%;background:#33415C}
+.term-bar .t-title{
+  margin-left:auto;margin-right:auto;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--term-dim);
+  width:auto;height:auto;border-radius:0;background:none;
+}
+.term-body{padding:18px 20px 22px;font-family:'IBM Plex Mono',monospace;font-size:.8rem;line-height:1.9;color:var(--term-text)}
+.t-cmd{color:var(--term-dim)}
+.t-cmd b{color:var(--term-text);font-weight:500}
+.t-line{opacity:0;animation:reveal .3s ease forwards}
+.t-line .ck{color:var(--term-green)}
+.t-line .val{color:var(--term-amber)}
+.t-sum{color:var(--term-green);font-weight:600}
+.t-line:nth-child(2){animation-delay:.4s}
+.t-line:nth-child(3){animation-delay:.8s}
+.t-line:nth-child(4){animation-delay:1.2s}
+.t-line:nth-child(5){animation-delay:1.6s}
+.t-line:nth-child(6){animation-delay:2.0s}
+.t-line:nth-child(7){animation-delay:2.5s}
+@keyframes reveal{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .t-line{animation:none;opacity:1}
+  .btn,.card,.xp-card{transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- sections ---------- */
+section{padding:64px 0}
+.sec-head{margin-bottom:36px}
+.sec-eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--pass);margin-bottom:8px;
+}
+h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.7rem;letter-spacing:-.01em}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 20px;
+}
+.metric .num{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.02em;
+  color:var(--ink);
+}
+.metric .num em{font-style:normal;color:var(--pass)}
+.metric .lbl{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft);margin-top:6px;line-height:1.5}
+
+/* experience */
+.xp-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 26px 22px;margin-bottom:18px;
+}
+.xp-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:4px}
+.xp-role{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.12rem}
+.xp-co{color:var(--ink-soft);font-weight:500}
+.xp-date{
+  font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--ink-soft);
+  background:var(--bg);border:1px solid var(--line);border-radius:999px;
+  padding:4px 12px;height:fit-content;white-space:nowrap;
+}
+.xp-card ul{list-style:none;margin-top:14px}
+.xp-card li{
+  position:relative;padding-left:26px;margin-bottom:9px;color:var(--ink-soft);font-size:.94rem;
+}
+.xp-card li::before{
+  content:"✓";position:absolute;left:0;top:0;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;color:var(--pass);font-size:.85rem;
+}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--ink-soft);
+  border:1px solid var(--line);border-radius:6px;padding:3px 9px;background:var(--bg);
+}
+
+/* skills */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill-card h3{
+  font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--ink);margin-bottom:12px;
+  padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+.skill-card h3 .hash{color:var(--pass)}
+.skill-card p{font-size:.9rem;color:var(--ink-soft)}
+.skill-card p b{color:var(--ink);font-weight:600}
+
+/* achievements */
+.ach{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ach .card p{font-size:.92rem;color:var(--ink-soft)}
+.ach .card .big{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:1.5rem;color:var(--pass);
+  margin-bottom:6px;letter-spacing:-.01em;
+}
+
+/* certs strip */
+.certs{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.cert{
+  font-family:'IBM Plex Mono',monospace;font-size:.78rem;
+  background:var(--pass-soft);color:var(--pass);border-radius:8px;padding:8px 14px;font-weight:600;
+}
+.cert.alt{background:var(--amber-soft);color:var(--amber)}
+
+/* contact */
+.contact{
+  background:var(--term-bg);color:#fff;border-radius:18px;
+  padding:56px 40px;text-align:center;margin-bottom:72px;
+}
+.contact h2{color:#fff;margin-bottom:12px}
+.contact p{color:var(--term-dim);max-width:52ch;margin:0 auto 28px}
+.contact .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.contact .btn-primary{background:var(--term-green);color:var(--term-bg)}
+.contact .btn-ghost{background:transparent;border-color:var(--term-line);color:var(--term-text)}
+.contact .mono-link{
+  display:block;margin-top:26px;font-family:'IBM Plex Mono',monospace;
+  font-size:.8rem;color:var(--term-dim);
+}
+.contact .mono-link a{color:var(--term-green);text-decoration:none}
+.contact .mono-link a:hover{text-decoration:underline}
+
+footer{
+  border-top:1px solid var(--line);padding:22px 0 34px;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+}
+
+/* responsive */
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .skills-grid,.ach{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .nav-links{display:none}
+  .metrics,.skills-grid,.ach{grid-template-columns:1fr}
+  section{padding:48px 0}
+  .contact{padding:44px 22px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">ritika<span class="dot">.</span>singla</a>
+    <ul class="nav-links">
+      <li><a href="#impact">impact</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Senior SDET · QA Automation Architect</p>
+        <h1>Quality that ships is quality that's engineered.</h1>
+        <p class="lede">I'm Ritika Singla — 14+ years building test automation for cloud-native systems at Maersk, IBM, and S&amp;P Global. Playwright &amp; TypeScript frameworks, API contract testing, AI-assisted test engineering, and CI/CD quality gates that teams actually trust.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="#experience">View experience</a>
+        </div>
+      </div>
+
+      <div class="term" aria-label="Career summary styled as a test run">
+        <div class="term-bar">
+          <span></span><span></span><span></span>
+          <span class="t-title">career.spec.ts — playwright</span>
+        </div>
+        <div class="term-body">
+          <div class="t-cmd">$ <b>npx playwright test career.spec.ts</b></div>
+          <div class="t-line"><span class="ck">✓</span> experience &gt; <span class="val">14+ years</span> across QA engineering</div>
+          <div class="t-line"><span class="ck">✓</span> framework adopted by <span class="val">5 teams</span> at Maersk</div>
+          <div class="t-line"><span class="ck">✓</span> coverage <span class="val">30% → 75%</span>, manual effort <span class="val">−80%</span></div>
+          <div class="t-line"><span class="ck">✓</span> regression cycle <span class="val">4h → 30min</span></div>
+          <div class="t-line"><span class="ck">✓</span> defect leakage reduced by <span class="val">60%</span></div>
+          <div class="t-line t-sum">6 passed (14y 9m)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <section id="impact">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eyebrow">// impact report</p>
+        <h2>Numbers from production, not slides</h2>
+      </div>
+      <div class="metrics">
+        <div class="card metric">
+          <div class="num">30<em>→</em>75%</div>
+          <div class="lbl">automation coverage after defining the test pyramid at Maersk</div>
+        </div>
+        <div class="card metric">
+          <div class="num">4h<em>→</em>30m</div>
+          <div class="lbl">regression cycle time via parallel execution &amp; CI quality gates</div>
+        </div>
+        <div class="card metric">
+          <div class="num"><em>−</em>60%</div>
+          <div class="lbl">production defect leakage through shift-left contract checks</div>
+        </div>
+        <div class="card metric">
+          <div class="num">&gt;98%</div>
+          <div class="lbl">pass reliability after stabilising flaky suites with dev partnership</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eyebrow">// describe("experience")</p>
+        <h2>Where I've built quality</h2>
+      </div>
+
+      <div class="xp-card">
+        <div class="xp-top">
+          <div>
+            <div class="xp-role">Quality Assurance Architect <span class="xp-co">· A.P. Moller – Maersk</span></div>
+          </div>
+          <div class="xp-date">Dec 2023 — Present</div>
+        </div>
+        <ul>
+          <li>Designed a Playwright (TypeScript) framework from scratch — UI, API, and E2E layers with reusable fixtures and utilities, adopted across 5 teams.</li>
+          <li>Lead a team of 5 QA engineers/SDETs: technical direction, code reviews, coverage planning, and mentoring.</li>
+          <li>Own automated testing for AWS microservices (ECS, Fargate, Lambda, Kinesis) — REST APIs, async workflows, and Kafka streaming data.</li>
+          <li>Built a deterministic, Python-based validation harness for production datafeeds using an AI coding-assistant agent architecture with human-in-the-loop review.</li>
+          <li>Introduced WireMock &amp; Microcks service virtualization, unblocking parallel development for 4+ teams.</li>
+          <li>Led JMeter performance testing — bottleneck analysis that improved response times by 50%.</li>
+          <li>Embedded quality gates in GitHub Actions, cutting production escapes by ~40%; Grafana/Loki observability for fast root-cause analysis.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Playwright · TS</span><span class="tag">pytest</span><span class="tag">RestAssured</span><span class="tag">AWS</span><span class="tag">Kafka</span><span class="tag">GitHub Actions</span><span class="tag">JMeter</span><span class="tag">AEM/CMS</span>
+        </div>
+      </div>
+
+      <div class="xp-card">
+        <div class="xp-top">
+          <div class="xp-role">Quality Assurance Lead <span class="xp-co">· IBM</span></div>
+          <div class="xp-date">Nov 2021 — Dec 2023</div>
+        </div>
+        <ul>
+          <li>Designed Selenium (Java) and API automation frameworks standardizing test practice across enterprise client programs in regulated environments.</li>
+          <li>Implemented Cucumber BDD with Gherkin for business-readable scenarios; API testing with Postman/Newman.</li>
+          <li>Integrated automated suites into Jenkins CI with development and DevOps teams, reducing release-cycle bottlenecks.</li>
+          <li>Defined test strategy, effort estimation, and automation-adoption roadmaps; mentored 10+ engineers.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Selenium · Java</span><span class="tag">Cucumber BDD</span><span class="tag">Jenkins</span><span class="tag">Postman/Newman</span>
+        </div>
+      </div>
+
+      <div class="xp-card">
+        <div class="xp-top">
+          <div class="xp-role">Senior QA Engineer <span class="xp-co">· IHS Markit (now S&amp;P Global)</span></div>
+          <div class="xp-date">May 2014 — Nov 2021</div>
+        </div>
+        <ul>
+          <li>Seven years owning test execution and automation across financial-data platforms — from manual testing to automation-first quality engineering.</li>
+          <li>Full-stack testing across UI, APIs, SQL/NoSQL databases, and ETL pipelines, safeguarding data integrity for financial-services clients.</li>
+          <li>Built and maintained Selenium/Java frameworks, expanding automated regression coverage year over year.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Selenium · Java</span><span class="tag">SQL/NoSQL</span><span class="tag">ETL testing</span><span class="tag">CI/CD</span>
+        </div>
+      </div>
+
+      <div class="xp-card">
+        <div class="xp-top">
+          <div class="xp-role">Test Engineer <span class="xp-co">· Infosys</span></div>
+          <div class="xp-date">Oct 2011 — Feb 2014</div>
+        </div>
+        <ul>
+          <li>Manual and automation testing across enterprise client projects — where the fundamentals were built.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eyebrow">// toolchain</p>
+        <h2>What I work with</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="card skill-card">
+          <h3><span class="hash">#</span> UI automation</h3>
+          <p><b>Playwright (TypeScript)</b> — framework design, POM, parallel execution, auto-wait &amp; tracing. <b>Selenium 4 / Java</b> at expert level. pytest-based Python UI automation.</p>
+        </div>
+        <div class="card skill-card">
+          <h3><span class="hash">#</span> API &amp; contract testing</h3>
+          <p><b>RestAssured, Postman, Pytest</b> — schema &amp; payload validation, chained flows, contract tests. Allure &amp; Serenity reporting.</p>
+        </div>
+        <div class="card skill-card">
+          <h3><span class="hash">#</span> AI / LLM test engineering</h3>
+          <p>AI-assisted test generation with <b>Claude Code &amp; GitHub Copilot</b>; deterministic validation harnesses with human-in-the-loop review; coverage-gap analysis and failure triage.</p>
+        </div>
+        <div class="card skill-card">
+          <h3><span class="hash">#</span> CI/CD &amp; DevOps</h3>
+          <p><b>GitHub Actions, Jenkins</b> — quality gates, tiered regression suites, parallel execution. Docker. Grafana/Loki observability.</p>
+        </div>
+        <div class="card skill-card">
+          <h3><span class="hash">#</span> Performance &amp; reliability</h3>
+          <p><b>JMeter</b> — load, stress, and endurance strategy; latency (p50/p95), throughput, and scalability analysis across APIs and services.</p>
+        </div>
+        <div class="card skill-card">
+          <h3><span class="hash">#</span> Microservices &amp; data</h3>
+          <p><b>AWS</b> (ECS, Fargate, Lambda, Kinesis), <b>Kafka</b>, Temporal/Camunda. SQL/NoSQL validation, ETL testing, streaming pipeline verification. WireMock &amp; Microcks virtualization. AEM/CMS workflow testing.</p>
+        </div>
+      </div>
+      <div class="certs">
+        <span class="cert">✓ ISTQB Certified Tester</span>
+        <span class="cert alt">✓ AWS Certified Cloud Practitioner</span>
+        <span class="cert">B.Tech, Computer Engineering — Chandigarh Engineering College</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eyebrow">// selected achievements</p>
+        <h2>Built once, reused everywhere</h2>
+      </div>
+      <div class="ach">
+        <div class="card">
+          <div class="big">7+</div>
+          <p>Reusable automation libraries — auth handling, test-data factories, API clients, custom reporters — shared across product teams.</p>
+        </div>
+        <div class="card">
+          <div class="big">Shift-left</div>
+          <p>API contract checks and component-level tests running pre-merge — catching defects before they ever reach a release branch.</p>
+        </div>
+        <div class="card">
+          <div class="big">KPIs</div>
+          <p>Quality dashboards — coverage, pass rate, escape rate, MTTR — giving leadership clear release-readiness visibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2>Let's talk quality engineering</h2>
+        <p>Open to Principal / Staff SDET and QA Architect roles. Remote-friendly, based in Noida, India.</p>
+        <div class="row">
+          <a class="btn btn-primary" href="mailto:singla.ritika90@gmail.com">singla.ritika90@gmail.com</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/ritika-singla-qa" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <span class="mono-link">$ contact --phone <a href="tel:+917988338538">+91 79883 38538</a></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer class="wrap">
+    <span>© 2026 Ritika Singla</span>
+    <span>tests: <span style="color:var(--pass)">passing</span> · uptime: 14y+</span>
+  </footer>
+
+</body>
+</html>
